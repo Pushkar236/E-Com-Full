@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../redux/slices/productSlice";
 import ProductCard from "../components/Productcard";
+import Navbar from "../components/Navbar";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -12,16 +13,19 @@ const HomePage = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1 style={styles.heading}>Welcome to Our Store</h1>
-      {loading && <p style={styles.loading}>Loading products...</p>}
-      {error && <p style={styles.error}>{error}</p>}
-      <div style={styles.container}>
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+    <>
+      <Navbar />
+      <div>
+        <h1 style={styles.heading}>Welcome to Our Store</h1>
+        {loading && <p style={styles.loading}>Loading products...</p>}
+        {error && <p style={styles.error}>{error}</p>}
+        <div style={styles.container}>
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

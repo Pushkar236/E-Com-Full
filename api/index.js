@@ -9,6 +9,7 @@ const cors = require("cors");
 const authRouter = require("./routes/oauth.js");
 const requestRouter = require("./routes/request.js");
 const baseRoutes = require("./routes/baseRoutes.js");
+const productRouter = require("./routes/productRoutes.js");
 const { OAuth2Client } = require("google-auth-library");
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 const cookieParser = require("cookie-parser");
@@ -29,6 +30,7 @@ app.use(cookieParser());
 app.use("/", baseRoutes);
 app.use("/oauth", authRouter);
 app.use("/request", requestRouter);
+app.use("/products", productRouter);
 
 //connect to mongo database
 main().catch((err) => console.log(err));

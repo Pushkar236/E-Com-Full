@@ -1,10 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fetchProducts = createAsyncThunk("products/fetchProducts", async () => {
-  const response = await axios.get(`${process.env.REACT_APP_API_URL}/products`);
-  return response.data;
-});
+export const fetchProducts = createAsyncThunk(
+  "products/fetchProducts",
+  async () => {
+    const response = await axios.get(
+      `${import.meta.env.VITE_API_URL}/products`
+    );
+    return response.data;
+  }
+);
 
 const productSlice = createSlice({
   name: "products",
