@@ -14,19 +14,27 @@ const ProductPage = () => {
     
 
     return (
-        <>
-        <Navbar/>
-        
-        <div>
-        <h1 style={styles.heading}>Welcome to Our Store</h1>
-        {loading && <p style={styles.loading}>Loading products...</p>}
-        {error && <p style={styles.error}>{error}</p>}
-        <div style={styles.container}>
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+              <>
+        <div className="product-hero">      
+          <div class="home-hero-wrap" >
+            <div class="product-hero-navbar">
+              <Navbar />
+            </div>
+            <div class="h-hero-img-wrap_is__ov-h">
+              <img src=""  loading="lazy" alt="woman" class="image is-home" ></img>
+            </div>
+          </div>
+              <div>
+              <h1 style={styles.heading}>Welcome to Our Store</h1>
+              {loading && <p style={styles.loading}>Loading products...</p>}
+              {error && <p style={styles.error}>{error}</p>}
+              <div style={styles.container}>
+                {products.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+          </div>
         </div>
-    </div>
         </>
     );
 };
@@ -35,7 +43,7 @@ const styles = {
     heading: {
       textAlign: "center",
       margin: "20px 0",
-      color: "#333",
+      color: "#fffff",
     },
     container: {
       display: "grid",

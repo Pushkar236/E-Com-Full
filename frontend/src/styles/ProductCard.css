@@ -1,3 +1,14 @@
+
+.product-hero{
+  background-color: #dab165;
+}
+
+.product-hero-navbar{
+  background-color: #58391d;
+  border-radius: 10em;
+  padding: 1.3em;
+}
+
 .product-card {
     background-color: #fff;
     border-radius: 8px;
