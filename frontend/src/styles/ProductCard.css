@@ -1,16 +1,19 @@
 
 .product-hero{
   background-color: #dab165;
+  /* background-color: white; */
 }
 
 .product-hero-navbar{
-  background-color: #58391d;
+  /* background-color: #58391d; */
+  /* background-color: #844205; */
+  background-color: #6c3604;
   border-radius: 10em;
   padding: 1.3em;
 }
 
 .product-card {
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 8px;
     padding: 16px;
     cursor: pointer;

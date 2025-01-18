@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../redux/slices/productSlice";
 import ProductCard from "../components/ProductCard";
 import Navbar from "../components/Navbar";
+import "../styles/ProductCard.css"
 
 const ProductPage = () => {
     const dispatch = useDispatch();

@@ -28,14 +28,14 @@
     right: 16px;
     padding: 8px;
     background: none;
-    border: none;
+    border: 1px solid;
     cursor: pointer;
     color: #666;
     border-radius: 50%;
   }
   
   .close-button:hover {
-    background-color: #ffffff3d;
+    background-color: #ffffff74;
   }
   
   .auth-title {
@@ -95,12 +95,13 @@
   .auth-input {
     width: 100%;
     padding: 12px;
-    background-color: #ffffff;
-    
-    border: 1px solid transparent;
-    border-radius: 4px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid black;
+    border-radius: 0px;
     font-size: 16px;
     color: rgb(0, 0, 0);
+    
   }
   
   .auth-input:focus {

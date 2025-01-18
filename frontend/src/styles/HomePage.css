@@ -32,3 +32,43 @@
     max-width: none;
     display: inline-block;
 }
+/* section{
+    display: block;
+}
+.is__ov-h{
+    -webkit-mask-image: -webkit-radial-gradient(white,black);
+    mask-image: radial-gradient(white, black);
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 160px;
+    padding-right: 160px;
+}
+.applications{
+    margin-left: -90px;
+    margin-left: -95px;
+    padding-top: 100px;
+    padding-bottom: 120px;
+    display: block;
+} */
+
+/* 
+.btn_black {
+    grid-column-gap: .625rem;
+    grid-row-gap: .625rem;
+    background-color: black;
+    color: wheat;
+    cursor: pointer;
+    border-radius: 100px;
+    justify-content: center;
+    height: 3.75rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    display: flex;
+    will-change: auto;
+
+} */

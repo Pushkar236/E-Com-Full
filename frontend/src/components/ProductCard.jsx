@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
     <div style={styles.card}>
       {/* Product Image */}
       <div style={styles.imageContainer}>
-        <img src={product.thumbnail} alt={product.title} style={styles.image} />
+        <img src={"../src/assets/2.jpg"} alt={product.title} style={styles.image} />
       </div>
 
       {/* Product Details */}
@@ -46,7 +46,7 @@ const ProductCard = ({ product }) => {
 
 const styles = {
   card: {
-    backgroundColor: "#fff",
+    backgroundColor: "wheat",
     borderRadius: "8px",
     padding: "16px",
     cursor: "pointer",
@@ -60,7 +60,7 @@ const styles = {
     transform: "translateY(-5px)",
   },
   imageContainer: {
-    backgroundColor: "#f7f7f7",
+    backgroundColor: "wheat",
     borderRadius: "8px",
     padding: "10px",
     marginBottom: "16px",
@@ -121,7 +121,7 @@ const styles = {
   addToCart: {
     flexGrow: 1,
     height: "36px",
-    backgroundColor: "#007bff",
+    backgroundColor: "black",
     color: "white",
     fontSize: "0.875rem",
     fontWeight: "bold",
