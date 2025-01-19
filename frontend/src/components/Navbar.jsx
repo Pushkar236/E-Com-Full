@@ -131,6 +131,7 @@ const Navbar = () => {
                 Logout
               </button>
             </li>
+            
           ) : (
             <li>
               <Link to="/auth">
