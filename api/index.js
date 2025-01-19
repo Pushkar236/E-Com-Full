@@ -117,6 +117,20 @@ app.put("/edit", authMiddleware, async (req, res) => {
   }
 });
 
+app.post("/logout", async (req, res) => {
+  if (req.cookies.jwt_token) {
+    res.clearCookie("jwt_token");
+    console.log("Logged out");
+    res.status(200).json({ message: "Logged out" });
+  } else if (req.cookies.id_token) {
+    res.clearCookie("id_token");
+    console.log("Logged out");
+    res.status(200).json({ message: "Logged out" });
+  } else {
+    res.status(400).json({ message: "You haven't logged in" });
+  }
+});
+
 app.delete("/delete", authMiddleware, async (req, res) => {
   try {
     const userId = req.User.id;

@@ -15,19 +15,21 @@ const HomePage = () => {
 
   return (
     <>
-
-    <div class="home-hero-wrap">
-      <div class="home-hero-navbar">
-        <Navbar />
+      <div class="home-hero-wrap">
+        <div class="home-hero-navbar">
+          <Navbar />
+        </div>
+        <div class="h-hero-img-wrap_is__ov-h">
+          <img
+            src="https://cdn.prod.website-files.com/671898ae57fbee5bf1da9fba/673daa20f8d824dc60d87727_bg-1.webp"
+            loading="lazy"
+            alt="woman"
+            class="image is-home"
+          ></img>
+        </div>
       </div>
-      <div class="h-hero-img-wrap_is__ov-h">
-        <img src="https://cdn.prod.website-files.com/671898ae57fbee5bf1da9fba/673daa20f8d824dc60d87727_bg-1.webp"  loading="lazy" alt="woman" class="image is-home" ></img>
-      </div>
-    </div>
 
-    
-
-    {/* <section class= "section is__ov-h">
+      {/* <section class= "section is__ov-h">
         <div class= "container">
           <div class = "applications">
               <div class="applications_top blur-animation is-act" style="will-change: auto;">
@@ -136,18 +138,13 @@ const HomePage = () => {
           </div>
         </div>
     </section>   */}
-
     </>
   );
 };
 
-
 export default HomePage;
 
-
-
-
-    /* <div class="home-hero-wrap">
+/* <div class="home-hero-wrap">
     <section class="section is-nav-s is-wht is-m">
         <div data-animation="default" class="navbar is-wht w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" data-w-id="6b66ac5f-a8c2-cdd2-aff2-f24e8c3768e6" role="banner" data-duration="400">
             <div class="nav-cc is-wht">
@@ -159,7 +156,3 @@ export default HomePage;
         </div>
       
        */
-
-
-
-        

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 
@@ -6,17 +6,58 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isAuthenticated = !!localStorage.getItem("token");
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    window.location.reload(); // Refresh page to update auth state
+  const [isValid, setIsValid] = useState(null);
+  // const navigate = useNavigate();
+
+  useEffect(() => {
+    const verifyToken = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/verifyToken", {
+          method: "POST",
+          credentials: "include",
+        });
+        if (response.ok) {
+          setIsValid(true);
+        } else {
+          setIsValid(false);
+        }
+      } catch (err) {
+        console.log("Found an error while verifying token", err);
+      }
+    };
+
+    verifyToken();
+
+    return;
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+      if (response.ok) {
+        alert("Logged out successfully");
+        window.location.reload(); // Refresh page to update auth state
+      } else {
+        alert("Failed to logout");
+      }
+    } catch (err) {
+      console.log("Found an error while verifying token", err);
+    }
   };
 
   return (
     <div className="navbar-container">
       <div className="navbar-content">
-        <Link to="/" aria-label="Company" title="Company" className="inline-flex items-center" style={
-          { color: 'white' }
-        }>
+        <Link
+          to="/"
+          aria-label="Company"
+          title="Company"
+          className="inline-flex items-center"
+          style={{ color: "white" }}
+        >
           <svg
             className="w-8 text-deep-purple-accent-400"
             viewBox="0 0 24 24"
@@ -68,18 +109,18 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="menu-item is-about">
-              <Link
-                to="/"
-                aria-label="About us"
-                title="About us"
-                className="menu-link-about"
-              >
-                About us
-              </Link>
+            <Link
+              to="/"
+              aria-label="About us"
+              title="About us"
+              className="menu-link-about"
+            >
+              About us
+            </Link>
           </li>
         </ul>
         <ul className="action-buttons hidden lg:flex">
-          {isAuthenticated ? (
+          {isValid ? (
             <li>
               <button
                 onClick={handleLogout}
@@ -92,24 +133,31 @@ const Navbar = () => {
             </li>
           ) : (
             <li>
-              <Link
-                to="/auth"
-              >
-              <button 
-                class="group relative inline-flex h-[calc(48px+8px)] items-center justify-center rounded-full bg-neutral-950 py-1 pl-6 pr-14 font-medium text-neutral-50">
+              <Link to="/auth">
+                <button class="group relative inline-flex h-[calc(48px+8px)] items-center justify-center rounded-full bg-neutral-950 py-1 pl-6 pr-14 font-medium text-neutral-50">
                   <span class="z-10 pr-2">Login</span>
                   <div class="absolute right-1 inline-flex h-12 w-12 items-center justify-end rounded-full bg-neutral-700 transition-[width] group-hover:w-[calc(100%-8px)]">
                     <div class="mr-3.5 flex items-center justify-center">
-                      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-neutral-50">
-                        <path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+                      <svg
+                        width="15"
+                        height="15"
+                        viewBox="0 0 15 15"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 text-neutral-50"
+                      >
+                        <path
+                          d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
+                          fill="currentColor"
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                        ></path>
                       </svg>
                     </div>
                   </div>
-              </button>
-              
+                </button>
               </Link>
             </li>
-            
           )}
         </ul>
         <div className="lg:hidden">
@@ -139,7 +187,12 @@ const Navbar = () => {
               <div className="p-5 bg-white border rounded shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <Link to="/" aria-label="Company" title="Company" className="inline-flex items-center">
+                    <Link
+                      to="/"
+                      aria-label="Company"
+                      title="Company"
+                      className="inline-flex items-center"
+                    >
                       <svg
                         className="w-8 text-deep-purple-accent-400"
                         viewBox="0 0 24 24"
@@ -249,8 +302,5 @@ const Navbar = () => {
     </div>
   );
 };
-
-
-
 
 export default Navbar;
